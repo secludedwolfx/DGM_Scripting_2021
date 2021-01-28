@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// vaules for forward speed and turnspeed
 public class Move : MonoBehaviour
 {
-    public float speed = 5.0f;
+    private float speed = 30.0f;
 
-    public float Hinput;
-    public float Vinput;
+    private float turnspeed = 35.0f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    // Horizontal and vertaical inputs
+
+    private float Hinput;
+    private float Vinput;
 
     // Update is called once per frame
     void Update()
@@ -22,6 +21,6 @@ public class Move : MonoBehaviour
         Vinput = Input.GetAxis("Vertical");
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed * Vinput);
-        transform.Translate(Vector3.right * Time.deltaTime * speed * Hinput);
+        transform.Rotate(Vector3.up, turnspeed * Time.deltaTime * Hinput);
     }
 }
